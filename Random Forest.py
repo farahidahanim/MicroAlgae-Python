@@ -15,7 +15,7 @@ from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 file_path = "C:/Users/Farahida Hanim/OneDrive/Desktop/Experimental Result Algae/Kaggle Dataset Algeas Grow in Artificial Water Bodies/algeas_normalized.csv"
 #get the data
 df = pd.read_csv(file_path) 
-
+#print(df.head()) 
 
 # Check for missing values
 #df.dropna(inplace=True) 
@@ -39,6 +39,7 @@ model.fit(X_train_scaled, y_train)
 # Predictions
 y_pred = model.predict(X_test_scaled)
 
+#Train model
 # Evaluate model
 r2 = r2_score(y_test, y_pred)
 mae = mean_absolute_error(y_test, y_pred)
@@ -46,10 +47,10 @@ rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 print(f'R2 Score: {r2:.4f}, MAE: {mae:.4f}, RMSE: {rmse:.4f}')  
 
 
-# Feature importance
-importances = model.feature_importances_
-feature_importance_df = pd.DataFrame({'Feature': X.columns, 'Importance': importances})
-feature_importance_df = feature_importance_df.sort_values(by='Importance', ascending=False)
+# # Feature importance
+# importances = model.feature_importances_
+# feature_importance_df = pd.DataFrame({'Feature': X.columns, 'Importance': importances})
+# feature_importance_df = feature_importance_df.sort_values(by='Importance', ascending=False)
 
 
 # Plot feature importance
@@ -59,24 +60,24 @@ feature_importance_df = feature_importance_df.sort_values(by='Importance', ascen
 # plt.show()
 
 # # Display full feature importance ranking
-print("\nFeature Importance Ranking:")
-print(feature_importance_df)
+# print("\nFeature Importance Ranking:")
+# print(feature_importance_df)
 
-# Show predictions vs actual values
-result_df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
-print("\nSample Predictions:")
-print(result_df.head(10))  # Display first 10 predictions
+# # Show predictions vs actual values
+# result_df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
+# print("\nSample Predictions:")
+# print(result_df.head(10))  # Display first 10 predictions
 
 
-##Plot actual vs predicted values
-plt.figure(figsize=(10,5))
-plt.scatter(range(len(y_test)), y_test, alpha=0.5, color='red', label='Actual')
-plt.scatter(range(len(y_pred)), y_pred, alpha=0.5, color='blue', label='Predicted')
-plt.xlabel('Sample Index')
-plt.ylabel('Population')
-plt.title('Actual vs Predicted Population')
-plt.legend()
-plt.show()
+# ##Plot actual vs predicted values
+# plt.figure(figsize=(10,5))
+# plt.scatter(range(len(y_test)), y_test, alpha=0.5, color='red', label='Actual')
+# plt.scatter(range(len(y_pred)), y_pred, alpha=0.5, color='blue', label='Predicted')
+# plt.xlabel('Sample Index')
+# plt.ylabel('Population')
+# plt.title('Actual vs Predicted Population')
+# plt.legend()
+# plt.show()
 
 # Plot actual vs predicted values against Light, temperature and pH and CO2 etc
 # plt.figure(figsize=(10,5))
@@ -86,4 +87,18 @@ plt.show()
 # plt.ylabel('Population')
 # plt.title('Actual vs Predicted Population vs Phosphate')
 # plt.legend()
-# plt.show()
+# plt.show() 
+#don upload to github : farahidahanim/MicroAlgae-Python  
+
+# #Defining population model 
+# import numpy as np
+# def population_model(vars):
+#     """ Predict Population based on input variables using Random Forest. """
+#     vars = np.array(vars).reshape(1, -1)  # Convert input to correct shape
+#     return model.predict(vars)[0]  # Predict Population
+
+
+
+# input_values = [0.3, 0.1, 0.3, 0.5, 0.7, 0.2, 0.4]  # Example input values
+# predicted_population = population_model(input_values)
+# print(f"Predicted Population: {predicted_population}")
