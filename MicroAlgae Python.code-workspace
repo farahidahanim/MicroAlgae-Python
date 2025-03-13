@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"name": "MicroAlgae Python",
+			"path": "."
+		},
+		{
+			"name": "Django",
+			"path": "../Django"
+		},
+		{
+			"name": "Jupyter NoteBook",
+			"path": "../Jupyter NoteBook"
+		}
+	],
+	"settings": {
+		"r.lsp.promptToInstall": false
+	}
+}
